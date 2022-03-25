@@ -464,10 +464,12 @@ void InterPrediction::xPredInterUni(const PredictionUnit &pu, const RefPicList &
   if( pu.cu->affine )
   {
     CHECK( iRefIdx < 0, "iRefIdx incorrect." );
-
+ 
     mv[0] = pu.mvAffi[eRefPicList][0];
     mv[1] = pu.mvAffi[eRefPicList][1];
     mv[2] = pu.mvAffi[eRefPicList][2];
+
+    printf("xPredInterUni affine mv[0] = (%d,%d) mv[1] = (%d,%d) mv[2] = (%d,%d)\n",mv[0].hor,mv[0].ver,mv[1].hor,mv[1].ver,mv[2].hor,mv[2].ver); //cmdiniz
   }
   else
   {
@@ -884,6 +886,8 @@ bool InterPrediction::xPredAffineBlk(const ComponentID &compID, const Prediction
 void InterPrediction::xPredAffineBlk(const ComponentID &compID, const PredictionUnit &pu, const Picture *refPic, const Mv *_mv, PelUnitBuf &dstPic, const bool &bi, const ClpRng &clpRng, bool genChromaMv, const std::pair<int, int> scalingRatio)
 #endif
 {
+
+  printf("xPredAffineBlk\n"); //cmdiniz	
 
   JVET_J0090_SET_REF_PICTURE( refPic, compID );
   const ChromaFormat chFmt = pu.chromaFormat;

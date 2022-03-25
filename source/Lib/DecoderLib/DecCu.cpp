@@ -103,6 +103,8 @@ void DecCu::decompressCtu( CodingStructure& cs, const UnitArea& ctuArea )
 
   const int maxNumChannelType = cs.pcv->chrFormat != CHROMA_400 && CS::isDualITree( cs ) ? 2 : 1;
 
+  printf("decompressCtu\n"); //cmdiniz
+
   if (cs.resetIBCBuffer)
   {
     m_pcInterPred->resetIBCBuffer(cs.pcv->chrFormat, cs.slice->getSPS()->getMaxCUHeight());
@@ -616,6 +618,15 @@ void DecCu::xIntraRecACTQT(CodingUnit &cu)
 
 void DecCu::xReconInter(CodingUnit &cu)
 {
+  if(cu.affine) //cmdiniz
+  { //cmdiniz
+    printf("xReconInter affine "); //cmdiniz
+    if(cu.affineType==AFFINEMODEL_4PARAM) printf("4 parameters\n"); //cmdiniz
+    else if (cu.affineType==AFFINEMODEL_6PARAM) printf("6 parameters\n"); //cmdiniz
+    else printf("other\n"); //cmdiniz
+  } //cmdiniz
+  
+  	
   if( cu.geoFlag )
   {
     m_pcInterPred->motionCompensationGeo( cu, m_geoMrgCtx );
