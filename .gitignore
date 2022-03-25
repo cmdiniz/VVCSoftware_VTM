@@ -2,7 +2,15 @@ dec.yuv
 rec.yuv
 str.bin
 /build/
-/bin/
+/bin/DecoderAnalyserAppStatic
+/bin/EncoderAppStatic
+/bin/SEIRemovalAppStatic
+/bin/SubpicMergeAppStatic
+/bin/BitstreamExtractorAppStatic
+/bin/DecoderAppStatic
+/bin/parcatStatic
+/bin/StreamMergeAppStatic
+/bin/umake
 /lib/
 core
 deploy
